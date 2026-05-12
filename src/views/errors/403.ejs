@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+<main>
+    <h1>Access Denied</h1>
+    <p>you do not have permissions to view this page.</p>
+    <img src="/images/403-error.png" alt="403 error">
+    <p><a href="/">Return to homepage</a></p>
+
+    <% if (NODE_ENV === 'development') { %>
+        <details open>
+            <summary> 403 Error, the user didn't have the right credentials</summary>
+            <pre><%= error %></pre>   
+        </details>
+    <% } %> 
+</main>
+<%- include('../partials/footer') %>
