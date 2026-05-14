@@ -1,11 +1,14 @@
 import { getFacultyById, getSortedFaculty} from '../../models/faculty/faculty.js';
 
 const facultyListPage = (req, res) => {
-    const faculty = getSortedFaculty();
+    //const faculty = getSortedFaculty();
+    const sortBy = req.query.sort || 'name';
+    const faculty = getSortedFaculty(sortBy);
 
     res.render('faculty/list', {
         title: 'Faculty Directory',
-        faculty : faculty
+        faculty : faculty,
+        currentSort: sortBy
     });
 };
 

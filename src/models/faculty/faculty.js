@@ -74,8 +74,30 @@ const faculty = {
     }
 };
 
-const getFacultyById = (facultyId) => {
+/*const getFacultyById = (facultyId) => {
     // TODO: Look up faculty member by ID, return null if not found
+    const member = faculty[facultyId];
+
+    if (!member) {
+        return null;
+    }
+
+    return {
+        ...member,
+        id: facultyId
+    };
+};*/
+const getFacultyById = (facultyId) => {
+    const member = faculty[facultyId];
+
+    if (!member) {
+        return null;
+    }
+
+    return {
+        ...member,
+        id: facultyId
+    };
 };
 
 const getSortedFaculty = (sortBy) => {
