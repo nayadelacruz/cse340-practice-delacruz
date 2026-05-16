@@ -1,7 +1,8 @@
 import { getFacultyById, getSortedFaculty} from '../../models/faculty/faculty.js';
 
 const facultyListPage = (req, res) => {
-    //const faculty = getSortedFaculty();
+    
+    const sorting = ['name', 'department', 'title'];
     const sortBy = req.query.sort || 'name';
     const faculty = getSortedFaculty(sortBy);
 
