@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { setupDatabase, testConnection } from './src/models/setup.js';
 
 // Import MVC components
 import routes from './src/controllers/routes.js';
@@ -23,6 +24,9 @@ const app = express();
  * Configure Express
  */
 app.use(express.static(path.join(__dirname, 'public')));
+// Allow Express to receive and process POST data
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'src/views'));
 
@@ -103,7 +107,11 @@ if (NODE_ENV.includes('dev')) {
  * Start Server
  */
 app.listen(PORT, () => {
+    app.listen(PORT, async () => {
+    await setupDatabase();
+    await testConnection();
     console.log(`Server is running on http://127.0.0.1:${PORT}`);
+});
 });
 
 //temporary
